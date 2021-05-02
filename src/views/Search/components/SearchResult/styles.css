@@ -1,0 +1,10 @@
+.search-result-list {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 16px;
+    margin-top: 16px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    animation: grow .3s;
+    transition: all .2s ease-in-out;
+}

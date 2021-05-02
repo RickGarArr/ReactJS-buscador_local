@@ -1,0 +1,114 @@
+button, input {
+    border: 1px solid gray;
+    width: 100%;
+    padding: 8px;
+    font-size: 1.8rem;
+}
+
+button:focus, input:focus {
+    outline: none;
+    box-shadow: 0 0 0px 1px var(--blue-green);
+}
+
+/* ------------------------------------------------------------------------------------------ // SearchBox // */ 
+ 
+.search-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons {
+    flex-basis: calc(40% - 2px);
+    display: flex;
+}
+
+.buttons button {
+    margin-left: 4px;
+}
+
+.buttons button:first {
+    margin: 0;
+}
+
+button span {
+    position: relative;
+    z-index: 2;
+}
+
+/* ------------------------------------------------------------------------------------------ // Button // */ 
+ 
+
+button {
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+button.search-button {
+    background-color: var(--dark-cornflower-blue);
+}
+
+button.cancel-button {
+    background-color: var(--rosso-corsa);
+}
+
+button::after,
+button::before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    top: 0;
+    bottom: 0;
+}
+button.search-button::after,
+button.search-button::before {
+    background-color: var(--navy-blue);
+}
+
+button.cancel-button::after,
+button.cancel-button::before {
+    background-color: var(--dark-red);   
+}
+
+button::after {
+    right: 50%;
+}
+
+button::before {
+    left: 50%;
+}
+
+button:hover::after,
+button:hover::before,
+button:focus::after,
+button:focus::before {
+    animation: spread .3s ease-in-out;
+}
+
+button:hover,
+button:focus {
+    transition: background-color;
+    transition-delay: .3s;
+}
+
+button.search-button:hover,
+button.search-button:focus {
+    background-color: var(--navy-blue);
+}
+
+button.cancel-button:hover,
+button.cancel-button:focus {
+    background-color: var(--dark-red);
+}
+
+@keyframes spread {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 50%;
+    }
+}
