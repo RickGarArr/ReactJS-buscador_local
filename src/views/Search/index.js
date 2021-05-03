@@ -1,17 +1,37 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
 
 import SearchBox from "./components/SearchBox";
 import SearchResults from './components/SearchResult';
 
 import './styles.css';
 
-import data from '../../data/users.json';
-
 export default function Search() {
 
     const [isAtTop, setIsAtTop] = useState(false);
-    const [usersData, setUsersData] = useState(data);
+    const [usersData, setUsersData] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
+
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+                // axios
+                const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+                console.log(response);
+                const data = response.data;
+                setUsersData(data);
+
+                // fetch
+                // const respuesta = await fetch('https://jsonplaceholder.typicode.com/users');
+                // const data = await respuesta.json();
+                // setUsersData(data);
+                // console.log(data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getUsers();
+    }, []);
     
     const handleSearchClick = (searchText) => {
         setFilteredUsers([]);
